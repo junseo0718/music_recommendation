@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: on-air-music
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    healthCheckPath: /auth
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.7
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: OPENWEATHER_API_KEY
+        sync: false
+      - key: SPOTIFY_CLIENT_ID
+        sync: false
+      - key: SPOTIFY_CLIENT_SECRET
+        sync: false

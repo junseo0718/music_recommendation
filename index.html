@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f3">
+  <title>온에어 · 오늘의 노래 추천</title>
+  <style>
+    :root{--paper:#f8f7f3;--ink:#292b36;--muted:#686a76;--purple:#6750a4;--line:#e5e3e9;--lavender:#eeebf8}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Pretendard","SUIT","Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}button,input{font:inherit}a{color:inherit}button,a,input{-webkit-tap-highlight-color:transparent}:focus-visible{outline:3px solid var(--purple);outline-offset:5px}.wrap{max-width:1180px;margin:auto;padding:0 40px}.header{height:100px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{text-decoration:none;display:flex;align-items:center;gap:11px;font-size:23px;font-weight:800;letter-spacing:-1px}.brand-icon{width:33px;height:33px;border-radius:50%;background:var(--purple);color:white;display:grid;place-items:center;font-size:19px}.header-note{font-size:12px;letter-spacing:2px;color:var(--muted)}.season-pill{font-size:12px;padding:7px 15px;border:1px solid #dcd5eb;border-radius:30px;color:#614d88;background:#f2eef9}.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center;padding:65px 0 54px}.eyebrow{font-size:11px;font-weight:700;letter-spacing:2.7px;color:var(--purple);margin:0 0 21px}.hero h1{font-size:clamp(36px,4.2vw,54px);line-height:1.35;letter-spacing:-2.7px;margin:0 0 22px;font-weight:750}.hero h1 em{font-style:normal;color:var(--purple)}.intro{color:var(--muted);font-size:15px;line-height:1.9;margin:0}.art{min-height:305px;display:grid;place-items:center;position:relative;border-radius:30px;background:radial-gradient(ellipse at 75% 22%,#fae4d6,transparent 52%),radial-gradient(ellipse at 25% 80%,#e1dcf4,transparent 58%),#f0edf5;overflow:hidden}.art svg{width:100%;max-width:420px;display:block}.art-label{position:absolute;left:22px;bottom:15px;color:#625875;font-size:10px;letter-spacing:2px}.search-panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 30px;display:grid;grid-template-columns:1fr 1.6fr;gap:32px;align-items:center;box-shadow:0 10px 35px #29203804}.search-title{font-size:17px;font-weight:700;margin:0 0 4px}.search-caption{margin:0;color:var(--muted);font-size:12px}.search-fields{display:flex;gap:10px}.input-wrap{flex:1;min-width:0;position:relative}.input-wrap svg{position:absolute;left:16px;top:18px;color:#847c95;width:20px;height:20px}input{width:100%;height:56px;padding:0 16px 0 46px;border:1px solid var(--line);background:#faf9fc;border-radius:12px;color:var(--ink);font-size:14px}button{border:0;border-radius:12px;padding:0 24px;background:var(--purple);color:#fff;font-size:14px;font-weight:700;cursor:pointer;min-height:56px;white-space:nowrap;transition:background .2s,transform .2s}button:hover{background:#55408d;transform:translateY(-1px)}button:disabled{opacity:.7;cursor:wait}.alert{background:#fff0e9;border:1px solid #ebc8b9;padding:16px 20px;border-radius:12px;color:#8b442e;font-size:14px;margin-top:18px}.content{display:grid;grid-template-columns:270px 1fr;gap:32px;margin:42px 0 65px;align-items:start}.weather-card{border:1px solid #e1dbea;border-radius:20px;background:linear-gradient(145deg,#f0ecfa,#f8f5fb);padding:26px}.small-label{font-size:10px;letter-spacing:2px;color:#726886;font-weight:700;margin:0 0 19px}.weather-card h2{margin:0;font-size:23px;letter-spacing:-.8px;overflow-wrap:anywhere}.weather-symbol{font-size:44px;line-height:1.5;margin:16px 0 6px}.temperature{font-size:40px;font-weight:600;letter-spacing:-2px}.weather-description{font-size:13px;color:#696077;margin:4px 0 22px}.weather-meta{border-top:1px solid #ddd5e8;padding-top:15px;font-size:12px;display:flex;justify-content:space-between;gap:10px;color:#696077}.side-note{font-size:12px;color:var(--muted);line-height:1.9;padding:0 10px;margin-top:18px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 20px}.section-head h2{font-size:22px;letter-spacing:-.8px;margin:0}.section-head span{font-size:10px;letter-spacing:1.5px;color:var(--muted)}.empty{border:1px dashed #d8d4e1;border-radius:20px;text-align:center;min-height:268px;padding:39px 20px;background:#ffffff70;display:flex;flex-direction:column;align-items:center;justify-content:center}.empty-icon{display:grid;place-items:center;background:#eeebf6;width:52px;height:52px;border-radius:18px;color:var(--purple);font-size:26px;margin-bottom:17px}.empty h3{font-size:17px;margin:0 0 8px;letter-spacing:-.5px}.empty p{font-size:13px;color:var(--muted);margin:0;line-height:1.9}.tracks{list-style:none;padding:0;margin:0;display:grid;gap:10px}.track{display:flex;align-items:center;gap:16px;padding:17px 19px;border:1px solid var(--line);border-radius:15px;background:#fff;transition:border-color .2s,transform .2s}.track:hover{border-color:#c6b5e2;transform:translateY(-2px)}.rank{font-size:12px;color:#85808e;min-width:18px;font-variant-numeric:tabular-nums}.cover{width:48px;height:48px;flex-shrink:0;border-radius:12px;background:linear-gradient(140deg,#eee6f9,#c7b6e3);display:grid;place-items:center;color:#675083;font-size:23px}.track:nth-child(3n+2) .cover{background:linear-gradient(140deg,#fbe8d9,#e8bda9);color:#925941}.track:nth-child(3n) .cover{background:linear-gradient(140deg,#e4ede2,#b5cbb3);color:#506d4d}.track-info{flex:1;min-width:0}.track-title{margin:0;font-size:15px;font-weight:700;overflow-wrap:anywhere}.artist{font-size:12px;color:var(--muted);margin:3px 0 0;overflow-wrap:anywhere}.play{font-size:11px;text-decoration:none;color:var(--purple);background:#f3eff9;min-height:40px;padding:10px 12px;border-radius:30px;flex-shrink:0}.play:hover{background:#e9e1f5}.footer{border-top:1px solid var(--line);padding:23px 0 30px;display:flex;justify-content:space-between;gap:20px;font-size:11px;color:#777580}.footer strong{font-weight:600;color:#57515f}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:850px){.wrap{padding:0 24px}.hero{gap:22px;padding:40px 0}.hero h1{font-size:38px}.art{min-height:270px}.search-panel{grid-template-columns:1fr;gap:18px}.content{grid-template-columns:220px 1fr;gap:22px}.header-note{display:none}}
+    @media(max-width:600px){.wrap{padding:0 20px}.header{height:78px}.hero{grid-template-columns:1fr;padding:34px 0 26px;gap:26px}.hero h1{font-size:38px;letter-spacing:-2px}.intro{font-size:14px}.art{min-height:210px;max-height:240px}.art svg{max-width:320px}.search-panel{padding:22px 18px}.search-fields{flex-direction:column}.search-fields button{width:100%}.content{grid-template-columns:1fr;margin:28px 0 40px;gap:26px}.weather-card{padding:22px}.weather-symbol{float:right;margin:0 8px}.side-note{display:none}.weather-description{margin-bottom:14px}.track{gap:10px;padding:13px 12px}.cover{width:38px;height:42px}.play{font-size:10px;padding:10px}.section-head h2{font-size:20px}.footer{flex-direction:column;gap:5px}.empty{min-height:240px}}
+    @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+    .account{display:flex;align-items:center;gap:12px}.account-name{font-size:12px;color:var(--muted)}.logout-form{margin:0}.logout{min-height:36px;padding:0 14px;background:#fff;color:var(--purple);border:1px solid #dcd5eb;font-size:12px}.logout:hover{background:#f2eef9}
+    @media(max-width:600px){.account-name{display:none}.season-pill{display:none}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="header">
+    <a class="brand" href="/" aria-label="온에어 홈"><span class="brand-icon" aria-hidden="true">♪</span>온에어<span style="color:#9b88bc">.</span></a>
+    <span class="header-note">A LITTLE WEATHER, A LITTLE MUSIC</span>
+    <div class="account"><span class="season-pill">{{ season }}의 리듬</span><span class="account-name">{{ session.user_name }}님</span><form class="logout-form" method="POST" action="{{ url_for('logout') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="logout" type="submit">로그아웃</button></form></div>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">YOUR DAILY SOUNDTRACK</p>
+        <h1 id="hero-title">오늘의 공기에,<br><em>음악을 더해요.</em></h1>
+        <p class="intro">창밖의 날씨와 지금의 계절을 담아.<br>당신의 하루에 어울리는 노래를 찾아드릴게요.</p>
+      </div>
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 440 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="sleeve" x1="60" y1="50" x2="290" y2="290" gradientUnits="userSpaceOnUse"><stop stop-color="#b5a0d9"/><stop offset="1" stop-color="#e6dbf3"/></linearGradient><radialGradient id="vinyl"><stop stop-color="#595363"/><stop offset="1" stop-color="#302d39"/></radialGradient></defs>
+          <circle cx="342" cy="62" r="31" fill="#f8cd94"/><path d="M37 205C117 166 164 263 275 233s106-64 150-45" stroke="white" stroke-opacity=".65" stroke-width="2"/>
+          <g transform="rotate(-12 180 155)"><rect x="73" y="59" width="201" height="201" rx="10" fill="#9984b9" opacity=".12" transform="translate(0 9)"/><rect x="73" y="50" width="201" height="201" rx="10" fill="url(#sleeve)"/><circle cx="175" cy="150" r="69" stroke="#eee7f8" stroke-width="1"/><circle cx="175" cy="150" r="49" stroke="#eee7f8" stroke-width="1"/><path d="M86 204c52-71 100-71 174 0" stroke="#f9f4fc" stroke-width="2"/><text x="92" y="78" fill="#57496d" font-family="sans-serif" font-size="9" letter-spacing="3">EVERYDAY, A NEW MOOD</text></g>
+          <circle cx="266" cy="164" r="96" fill="#625371" opacity=".1" transform="translate(0 8)"/><circle cx="266" cy="157" r="96" fill="url(#vinyl)"/><g stroke="#82758d" stroke-opacity=".3"><circle cx="266" cy="157" r="86"/><circle cx="266" cy="157" r="78"/><circle cx="266" cy="157" r="70"/><circle cx="266" cy="157" r="62"/><circle cx="266" cy="157" r="54"/></g><circle cx="266" cy="157" r="34" fill="#f0c4ae"/><circle cx="266" cy="157" r="5" fill="#39323f"/><text x="244" y="145" fill="#795849" font-family="sans-serif" font-size="7" letter-spacing="2">ON AIR</text><path d="M390 122v20m-10-10h20M47 96v14m-7-7h14" stroke="#a799bd" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="art-label">SOUNDS LIKE A GOOD DAY.</span>
+      </div>
+    </section>
+    <form method="POST" class="search-panel" id="recommend-form">
+      <div><label for="city" class="search-title">지금, 어디에 있나요?</label><p class="search-caption" id="city-help">도시의 날씨에 맞춰 오늘의 음악을 골라드려요.</p></div>
+      <div class="search-fields">
+        <div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><input type="text" id="city" name="city" placeholder="도시 이름 · 예: Bucheon" value="{{ city }}" required aria-describedby="city-help" autocomplete="address-level2"></div>
+        <button type="submit" id="recommend-button">노래 추천받기 <span aria-hidden="true">↗</span></button>
+      </div>
+    </form>
+    <p id="loading-status" class="sr-only" role="status"></p>
+    {% if error %}<p class="alert" role="alert">{{ error }}</p>{% endif %}
+    <div class="content">
+      <aside>
+        <section class="weather-card" aria-labelledby="weather-title">
+          <p class="small-label">WEATHER & MOOD</p>
+          {% if weather_info %}
+            <h2 id="weather-title">{{ weather_info.city }}</h2>
+            <div class="weather-symbol" aria-hidden="true">{% if weather_info.weather == 'Clear' %}☀{% elif weather_info.weather == 'Snow' %}❄{% elif weather_info.weather in ['Rain', 'Drizzle', 'Thunderstorm'] %}☂{% else %}☁{% endif %}</div>
+            {% if weather_info.temperature is defined %}<div class="temperature">{{ weather_info.temperature | round | int }}°</div>{% endif %}
+            <p class="weather-description">{{ weather_info.description }}</p>
+            <div class="weather-meta"><span>현재 계절 · {{ season }}</span><span>습도 {{ weather_info.humidity }}%</span></div>
+          {% else %}
+            <h2 id="weather-title">계절은, {{ season }}</h2>
+            <div class="weather-symbol" aria-hidden="true">♪</div>
+            <p class="weather-description">{{ season }}의 분위기에<br>오늘의 날씨를 더해볼까요?</p>
+            <div class="weather-meta"><span>도시를 입력하면 날씨가 표시돼요.</span></div>
+          {% endif %}
+        </section>
+        <p class="side-note">같은 도시, 다른 날씨.<br>매일 조금씩 달라지는 분위기를<br>음악으로 만나보세요.</p>
+      </aside>
+      <section aria-labelledby="playlist-title">
+        <div class="section-head"><h2 id="playlist-title">오늘의 노래 추천</h2><span>{% if recommendations %}{{ recommendations | length }} TRACKS{% else %}MADE FOR YOUR DAY{% endif %}</span></div>
+        {% if recommendations %}
+          <ol class="tracks">
+          {% for track in recommendations %}
+            <li class="track">
+              <span class="rank">{{ '%02d' | format(loop.index) }}</span><div class="cover" aria-hidden="true">♪</div>
+              <div class="track-info"><h3 class="track-title">{{ track.title }}</h3><p class="artist">{{ track.artists | join(', ') }}</p></div>
+              <a class="play" href="{{ track.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ track.title }} Spotify에서 듣기 (새 탭)">Spotify <span aria-hidden="true">↗</span></a>
+            </li>
+          {% endfor %}
+          </ol>
+        {% else %}
+          <div class="empty"><div class="empty-icon" aria-hidden="true">♫</div>
+            {% if error %}<h3>잠시, 음악을 고르는 중에 멈췄어요.</h3><p>위의 안내를 확인하고 다시 추천받기를 눌러주세요.</p>
+            {% elif weather_info %}<h3>아직 어울리는 곡을 찾지 못했어요.</h3><p>다른 도시로 검색하거나 잠시 후 다시 시도해 주세요.</p>
+            {% else %}<h3>당신의 하루는 어떤 소리인가요?</h3><p>도시를 입력하고 추천받기를 눌러보세요.<br>오늘의 분위기에 어울리는 10곡이 여기에 모일 거예요.</p>{% endif %}
+          </div>
+        {% endif %}
+      </section>
+    </div>
+  </main>
+  <footer class="footer"><strong>온에어 · 일상에 음악이 스며드는 순간</strong><span>Weather by OpenWeather · Music via Spotify</span></footer>
+</div>
+<script>
+  const form = document.getElementById('recommend-form');
+  const button = document.getElementById('recommend-button');
+  form.addEventListener('submit', function () {
+    button.disabled = true;
+    button.textContent = '음악을 고르고 있어요…';
+    form.setAttribute('aria-busy', 'true');
+    document.getElementById('loading-status').textContent = '날씨와 추천 음악을 불러오고 있습니다.';
+  });
+  window.addEventListener('pageshow', function () {
+    button.disabled = false;
+    button.textContent = '노래 추천받기 ↗';
+    form.removeAttribute('aria-busy');
+    document.getElementById('loading-status').textContent = '';
+  });
+</script>
+</body>
+</html>

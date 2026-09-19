@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f3">
+  <title>온에어 · 시작하기</title>
+  <style>
+    :root{--paper:#f8f7f3;--ink:#292b36;--muted:#72727d;--purple:#6750a4;--line:#e5e3e9}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 14% 15%,#eee8fa 0,transparent 29%),radial-gradient(circle at 88% 85%,#fae5d9 0,transparent 31%),var(--paper);color:var(--ink);font-family:"Pretendard","SUIT","Apple SD Gothic Neo","Malgun Gothic",sans-serif;display:grid;place-items:center;padding:28px;line-height:1.55}.shell{width:min(980px,100%);min-height:650px;display:grid;grid-template-columns:1.04fr .96fr;background:#fff;border:1px solid var(--line);border-radius:30px;overflow:hidden;box-shadow:0 30px 90px rgba(50,39,75,.12)}.visual{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:48px;background:linear-gradient(145deg,#e6def4,#f4edf7 52%,#f8dfd3);overflow:hidden}.brand{display:flex;align-items:center;gap:11px;font-size:23px;font-weight:800;letter-spacing:-1px}.brand-icon{width:34px;height:34px;border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center}.record{position:absolute;width:340px;height:340px;border-radius:50%;background:repeating-radial-gradient(circle,#35313d 0 3px,#403b48 4px 7px);right:-70px;top:145px;box-shadow:0 24px 45px rgba(43,35,55,.22)}.record:before{content:"";position:absolute;width:106px;height:106px;border-radius:50%;background:#efbdac;left:117px;top:117px}.record:after{content:"♪";position:absolute;width:15px;height:15px;border-radius:50%;background:#39343e;color:#fff;left:162px;top:162px;display:grid;place-items:center;font-size:8px}.visual-copy{position:relative;z-index:1}.visual-copy p{font-size:11px;letter-spacing:2.4px;color:#6a587d;font-weight:700}.visual-copy h1{font-size:42px;line-height:1.3;letter-spacing:-2.2px;margin:12px 0}.visual-copy h1 em{font-style:normal;color:var(--purple)}.visual-copy span{font-size:14px;color:#67616e}.panel{padding:54px 58px;display:flex;flex-direction:column;justify-content:center}.eyebrow{font-size:11px;letter-spacing:2px;color:var(--purple);font-weight:700;margin:0 0 8px}.panel h2{font-size:31px;letter-spacing:-1.5px;margin:0 0 9px}.lead{font-size:13px;color:var(--muted);margin:0 0 28px}.tabs{display:flex;padding:4px;background:#f4f2f7;border-radius:12px;margin-bottom:24px}.tab{flex:1;text-align:center;padding:10px 8px;border-radius:9px;text-decoration:none;color:var(--muted);font-size:13px;font-weight:700}.tab.active{background:#fff;color:var(--purple);box-shadow:0 3px 12px rgba(48,38,70,.08)}label{display:block;font-size:12px;font-weight:700;margin:14px 0 7px}input{width:100%;height:50px;border:1px solid var(--line);border-radius:11px;background:#fbfafc;padding:0 15px;font:inherit;font-size:14px;color:var(--ink)}input:focus{outline:3px solid #e2d8f3;border-color:#9d88c2}.submit{width:100%;height:52px;border:0;border-radius:11px;margin-top:23px;background:var(--purple);color:#fff;font:inherit;font-size:14px;font-weight:700;cursor:pointer}.submit:hover{background:#56408f}.alert{font-size:12px;color:#8b442e;background:#fff0e9;border:1px solid #efcbbb;padding:11px 13px;border-radius:10px;margin:0 0 12px}.note{text-align:center;color:#92909a;font-size:11px;margin:19px 0 0}:focus-visible{outline:3px solid var(--purple);outline-offset:3px}@media(max-width:760px){body{padding:16px}.shell{grid-template-columns:1fr;min-height:auto}.visual{min-height:230px;padding:30px}.record{width:220px;height:220px;right:-30px;top:70px}.record:before{width:70px;height:70px;left:75px;top:75px}.record:after{left:104px;top:104px}.visual-copy h1{font-size:30px}.visual-copy span{display:none}.panel{padding:34px 28px 38px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="visual" aria-label="온에어 소개"><div class="brand"><span class="brand-icon" aria-hidden="true">♪</span>온에어<span style="color:#9b88bc">.</span></div><div class="record" aria-hidden="true"></div><div class="visual-copy"><p>YOUR DAILY SOUNDTRACK</p><h1>오늘의 공기에,<br><em>음악을 더해요.</em></h1><span>날씨와 계절에 어울리는 음악을 만나보세요.</span></div></section>
+    <section class="panel">
+      <p class="eyebrow">WELCOME TO ON AIR</p><h2>{% if mode == 'signup' %}처음 만나 반가워요{% else %}다시 만나 반가워요{% endif %}</h2><p class="lead">나만의 오늘의 플레이리스트를 시작해 보세요.</p>
+      <nav class="tabs" aria-label="계정 메뉴"><a class="tab {% if mode != 'signup' %}active{% endif %}" href="{{ url_for('auth', mode='login') }}">로그인</a><a class="tab {% if mode == 'signup' %}active{% endif %}" href="{{ url_for('auth', mode='signup') }}">회원가입</a></nav>
+      {% if error %}<p class="alert" role="alert">{{ error }}</p>{% endif %}
+      <form method="POST" action="{{ url_for('auth') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="mode" value="{{ mode }}">
+        {% if mode == 'signup' %}<label for="name">이름</label><input id="name" name="name" type="text" autocomplete="name" required placeholder="이름을 입력해 주세요">{% endif %}
+        <label for="email">이메일</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+        <label for="password">비밀번호</label><input id="password" name="password" type="password" autocomplete="{% if mode == 'signup' %}new-password{% else %}current-password{% endif %}" required minlength="8" placeholder="8자 이상 입력해 주세요">
+        {% if mode == 'signup' %}<label for="password-confirm">비밀번호 확인</label><input id="password-confirm" name="password_confirm" type="password" autocomplete="new-password" required minlength="8" placeholder="비밀번호를 한 번 더 입력해 주세요">{% endif %}
+        <button class="submit" type="submit">{% if mode == 'signup' %}회원가입하고 시작하기{% else %}로그인하기{% endif %}</button>
+      </form>
+      <p class="note">비밀번호는 안전하게 암호화되어 저장됩니다.</p>
+    </section>
+  </main>
+</body>
+</html>
